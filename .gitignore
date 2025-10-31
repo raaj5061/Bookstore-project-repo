@@ -1,1 +1,11 @@
-/node_modules
+# Ignore Node module folders
+**/node_modules
+
+# Backend Exclusions
+Backend/.env
+Backend/package-lock.json
+
+# Frontend Exclusions
+Frontend/package-lock.json
+Frontend/.vite/
+Frontend/users.json

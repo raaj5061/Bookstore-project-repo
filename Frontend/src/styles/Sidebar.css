@@ -1,0 +1,35 @@
+.sidebar {
+  background-color: white;
+  color: rgb(6, 3, 3);
+  padding-top: 10px;
+  margin-left: -20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+
+
+}
+
+.sidebar li {
+  margin-top: 4px;
+}
+
+.sidebar a {
+  color: rgb(51, 35, 35);
+  text-decoration: none;
+  font-size: 20px;
+  display: block;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.sidebar a:hover {
+  background-color: #403232b9;
+  color: white;
+}
+
+.sidebar a.active {
+  background-color: #232222;
+  color: white;
+}

@@ -1,0 +1,10 @@
+.nav{
+    width: 99%;
+    list-style-type: none;
+    column-gap: 20px;
+    padding: 10px;
+    color:aliceblue
+}
+.main-navbar{
+    background-color:rgb(9, 39, 64)
+}
