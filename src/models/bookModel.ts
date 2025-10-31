@@ -32,11 +32,11 @@ const bookSchema = new Schema(
     },
     author: {
       type: String,
-      reuired: true
+      required: true
     },
     image: {
       type: String,
-      reuired: true,
+      required: true,
     },
     category: {
       type: String,
@@ -52,11 +52,11 @@ const bookSchema = new Schema(
     },
     publisher: {
       type: String,
-      reuired: true,
+      required: true,
     },
     description: {
       type: String,
-      reuired: true,
+      required: true,
     },
     reviews: [reviewSchema],
   },

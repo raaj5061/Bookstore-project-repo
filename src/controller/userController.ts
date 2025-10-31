@@ -9,7 +9,6 @@ import { UserI } from "../types/UserI";
 config()
 export const createNewUser=async(req:Request , res:Response)=>{
     let user=req.body;
-    console.log(user)
     //the password is being hashed to store in db
     let hashedPassword=await hash(user.password,10)
     
@@ -19,17 +18,14 @@ export const createNewUser=async(req:Request , res:Response)=>{
     let userDoc= new userModel(user)
     let result=await userDoc.save()
     //doc saved 
-
-    console.log(result)
     res.status(201).json({message:"user created Successfully",payload:result})
 }
 export const login=async(req:Request,res:Response)=>{
     let user=req.body;
-    let userObj=await userModel.findOne({username:user.username}).populate({path:"cart._id",model:"book"})
+    let userObj=await userModel.findOne({username:user.username})
     //console.log(userObj)
     if(userObj){
         let result=await compare(user.password,userObj.password)
-        console.log(result)
         if(result){
             let {password,...userData}=userObj.toObject()
             let signedToken=sign({user:userData},process.env['SECRET']!,{expiresIn:'7d'})
@@ -48,7 +44,6 @@ export const login=async(req:Request,res:Response)=>{
 }
 
 export const logout=async(req:Request,res:Response)=>{
-  console.log("Bye bye")
   res.clearCookie("token",{
     httpOnly:true,
   })
@@ -58,15 +53,12 @@ export const logout=async(req:Request,res:Response)=>{
 export const readOneUser=async(req:Request,res:Response)=>{
   const userId=req.params['id']
   let user=await userModel.findOne({_id:userId}).populate({path:"cart._id",model:"book"})
-  console.log("One user read",user)
   res.status(200).json({payload:user})
 }
 
 export const editUser=async(req:Request,res:Response)=>{
     const userID=req.params['id']
     const user:UserI=req.body
-    console.log("the user is ",user)
     let result=await userModel.findByIdAndUpdate({_id:userID},{$set:user})
-    console.log(result)
     res.status(200).json({payload:result})
 }
