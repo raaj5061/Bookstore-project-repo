@@ -1,0 +1,53 @@
+post http://localhost:3000/user-api/register
+Content-Type: application/json
+
+{
+    "username": "sreya",
+    "email":"sreya@mail.com",
+    "password":"sreya",
+    "role": "customer",
+    "address":[]
+}
+
+### login 
+post http://localhost:3000/user-api/user-login
+Content-Type:  application/json
+
+{
+    "username":"sreya",
+    "password":"sreya"
+}
+### get all books
+get http://localhost:3000/book-api/get-book/69009f764cd7f9c96f7d8732
+
+###create book
+post http://localhost:3000/book-api/create-book 
+Content-Type: application/json
+
+{
+"bookname":"To Kill a Mockingbird",
+"author":"Harper Lee",
+"image":"https://m.media-amazon.com/images/I/81gepf1eMqL._AC_UF1000,1000_QL80_.…",
+"category":"Fiction",
+"price":12,
+"quantity":27,
+"publisher":"J. B. Lippincott & Company.",
+"description":"A novel about the serious issues of rape and racial inequality told fr…",
+"reviews":[]
+}
+
+###read particular user
+get http://localhost:3000/user-api/user/690072c9890450f7177772ef
+
+###edit user
+put http://localhost:3000/user-api/edit-user/690072c9890450f7177772ef
+Content-Type: application/json
+
+{
+    "username": "sreya",
+    "email":"sreya@mail.com",
+    "password":"sreya",
+    "role": "customer",
+    "address":[],
+    "cart":[]
+}
