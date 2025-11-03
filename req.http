@@ -51,3 +51,23 @@ Content-Type: application/json
     "address":[],
     "cart":[]
 }
+
+###create order 
+post http://localhost:3000/order-api/orders
+Content-Type: application/json
+
+{
+    "items":[
+        {
+            "bookid":"69009f764cd7f9c96f7d8732",
+            "quantity":2,
+            "priceATpurchase":30
+        }
+    ],
+    "user":"690072c9890450f7177772ef",
+    "paymentMethod":"cod"
+
+}
+
+###read all orders
+get http://localhost:3000/order-api/orders
