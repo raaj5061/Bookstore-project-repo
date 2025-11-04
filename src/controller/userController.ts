@@ -9,6 +9,10 @@ import { UserI } from "../types/UserI";
 config()
 export const createNewUser=async(req:Request , res:Response)=>{
     let user=req.body;
+    let check=await userModel.find({username:user.username})
+    if(check){
+      res.status(401).json({message:"username already taken"})
+    }
     //the password is being hashed to store in db
     let hashedPassword=await hash(user.password,10)
     

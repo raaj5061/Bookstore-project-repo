@@ -20,6 +20,7 @@ const itemSchema = new Schema(
 );
 const OrderSchema = new Schema(
   {
+    id:{type:String,required:true},
     items: [itemSchema],
     user: {
       type: Types.ObjectId,
