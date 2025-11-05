@@ -38,3 +38,16 @@ export const readOneBook=async(req:Request,res:Response)=>{
     res.status(200).json({message:"Book",payload:book})
 }
 
+export const updateInventory=async(req:Request,res:Response)=>{
+    let bookId=req.params['id']
+    let quantityToBeAdded=req.body.quantity
+    console.log(quantityToBeAdded)
+    let result=await bookModel.findByIdAndUpdate(bookId,{$inc:{quantity:quantityToBeAdded}},{new:true})
+    console.log(result)
+    if(result){
+        res.status(200).json({message:"updated"})
+    }
+    else{
+        res.status(401).json({message:"Error occured"})
+    }
+}
