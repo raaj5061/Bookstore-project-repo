@@ -71,3 +71,11 @@ Content-Type: application/json
 
 ###read all orders
 get http://localhost:3000/order-api/orders
+
+###
+patch http://localhost:3000/order-api/order/690ae452355b8cc0de0a33dd
+Content-Type: application/json
+
+{
+    "status":"shipped"
+}   

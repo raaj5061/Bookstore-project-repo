@@ -7,9 +7,11 @@ const itemSchema = new Schema(
     },
     quantity: {
       type: Number,
+      min: [1, " Quantity cannot be less than 1"],
     },
     priceATpurchase: {
       type: Number,
+      min: [1, "Price cannot be less than 1"],
     },
   },
   {
@@ -20,6 +22,7 @@ const itemSchema = new Schema(
 );
 const OrderSchema = new Schema(
   {
+    id: { type: String, required: true },
     items: [itemSchema],
     user: {
       type: Types.ObjectId,
@@ -27,10 +30,15 @@ const OrderSchema = new Schema(
     },
     paymentMethod: {
       type: String,
-      required: true,
+      required: [true, " Payment method is required"],
+    },
+    status: {
+      type: String,
+      enum: ["Pending", "Shipped", "Delivered", "Cancelled"],
+      default: "Pending",
     },
   },
-  { timestamps: true, versionKey: false, strict: "throw" }
+  { timestamps: true, versionKey: false, strict: "throw", id: false }
 );
 
 export const orderModel = model("order", OrderSchema);

@@ -7,6 +7,7 @@ export interface ReviewI {
 
 
 export interface BookI {
+  _id: string;
   bookname: string;
   author?: string;
   image?: string;
