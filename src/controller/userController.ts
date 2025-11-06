@@ -9,10 +9,12 @@ import { UserI } from "../types/UserI";
 config()
 export const createNewUser=async(req:Request , res:Response)=>{
     let user=req.body;
-    let check=await userModel.find({username:user.username})
+    let check=await userModel.findOne({username:user.username})
     if(check){
-      res.status(401).json({message:"username already taken"})
+      console.log(check)
+      res.status(409).json({message:"username already taken"})
     }
+    else{
     //the password is being hashed to store in db
     let hashedPassword=await hash(user.password,10)
     
@@ -23,6 +25,7 @@ export const createNewUser=async(req:Request , res:Response)=>{
     let result=await userDoc.save()
     //doc saved 
     res.status(201).json({message:"user created Successfully",payload:result})
+    }
 }
 export const login=async(req:Request,res:Response)=>{
     let user=req.body;
