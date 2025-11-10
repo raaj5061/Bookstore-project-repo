@@ -3,6 +3,7 @@ import { verify } from "jsonwebtoken";
 
 export const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   let token = req.cookies["token"];
+  console.log(token)
   if (!token) {
     res.status(401).json({ message: "UNAUTHORISED ACCESS" });
   } else {

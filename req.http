@@ -87,3 +87,6 @@ Content-Type: application/json
 {
     "quantity":5
 }
+
+###read one order
+get http://localhost:3000/order-api/order-user/690072c9890450f7177772ef

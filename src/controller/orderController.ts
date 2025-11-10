@@ -17,7 +17,15 @@ export const readAllOrders = async (req: Request, res: Response) => {
   ]);
   res.status(200).json({ message: "orders are", payload: orders });
 };
-
+//to read one order
+export const readOneOrder= async(req:Request,res:Response)=>{
+  let userid=req.params['id']
+  let result=await orderModel.find({user:userid}).populate([
+    { path: "items.bookid", model: "book" },
+    { path: "user", model: "user" },
+  ])
+  res.status(200).json({message:"The order is",payload:result})
+}
 //to update status for order
 export const updateOrderStatus = async (req: Request, res: Response) => {
   const { orderId } = req.params;
