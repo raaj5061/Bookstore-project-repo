@@ -23,12 +23,13 @@ app.use(
 );
 const PORT = process.env["PORT"] || 3000;
 
+app.use(cookieParser());
 
 app.use("/user-api", userRoute);
 app.use("/book-api", bookRouter);
 app.use("/order-api", orderRoute);
 
-app.use(cookieParser());
+
 
 //route to deal with page refresh
 app.get("/refresh", verifyToken, async (req: Request, res: Response) => {
